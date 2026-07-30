@@ -2,6 +2,10 @@
 
 Intelligently fill web forms with realistic test data. Click the paint can icon next to any form field to auto-fill an entire form.
 
+## Screenshot
+
+![Form auto-filled with realistic test data](screenshots/form-fill-demo.png)
+
 ## Files Created
 
 ### Core Extension Files
