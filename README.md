@@ -10,6 +10,12 @@ Marking a field to skip via picker mode (click "Pick Fields to Skip" in the popu
 
 ![Marking the Email field as skipped in picker mode](screenshots/field-blocker-demo.png)
 
+Custom field values via picker mode (click "Set Custom Values" in the popup, then click a field):
+
+![Green custom-value picker mode active on a form](screenshots/custom-picker-mode.png)
+![Entering a list of potential values for a text field](screenshots/custom-value-dialog.png)
+![Marking which radio options are eligible for random selection](screenshots/custom-options-dialog.png)
+
 ## Files Created
 
 ### Core Extension Files
@@ -69,6 +75,16 @@ Intelligently detects form field types based on:
 - Click icon next to first text field to auto-fill form
 - Always visible when enabled (default)
 
+### Custom Field Values
+
+Click "Set Custom Values" in the popup to enter a green picker mode (mirrors "Pick Fields to Skip" but the opposite intent - defining a value instead of blocking one). Click a field to configure it:
+
+- **Text/email/etc fields**: enter a list of potential values (one per line or comma-separated). One is picked at random each time the form is filled - always from your list, never generated data.
+- **Radio buttons**: clicking any radio in a group opens a checklist of every option in that group. Check which ones are eligible; one of the checked options is chosen at random on each fill.
+- **Checkboxes**: clicking any checkbox in a named group (or a standalone checkbox) opens the same style of checklist. Each checked-eligible option is independently checked ~50% of the time on each fill; non-eligible options are always left unchecked.
+
+Custom values take priority over both the `dv` attribute and smart detection - they're for cases where you need specific, real values rather than realistic-looking test data (e.g. a promo code field, a themed dropdown of fictional character names, etc). Manage or remove saved custom values from the settings page.
+
 ## How to Use
 
 ### As User
@@ -125,6 +141,7 @@ Open via the extension's popup or `chrome://extensions` to configure:
 | 🗺️ Location Data | If API fails (shown when reconciliation is on) | Leave the field blank, or fall back to random unverified data |
 | 🎨 Paint Can Trigger | Enable paint can icon | Toggles whether the auto-fill icon is injected next to the first text field on a form (on by default) |
 | 🚫 Fields to Skip | (list, not a toggle) | Fields marked via "Pick Fields to Skip" in the popup; each is individually removable, plus a "Clear All Skip Fields" button |
+| 🟢 Custom Field Values | (list, not a toggle) | Fields configured via "Set Custom Values" in the popup; each is individually removable, plus a "Clear All Custom Values" button |
 
 **Save Settings** and **Reset to Defaults** buttons apply/discard changes across the whole page.
 
@@ -177,6 +194,8 @@ Settings saved to `chrome.storage.sync`:
 - `reconcile` (boolean)
 - `reconcileAttempts` (number: 3, 5, or 10)
 - `reconcileFallback` (string: "blank" or "random")
+- `skipSelectors` (array of objects - fields marked to never auto-fill)
+- `customFields` (array of objects - fields with user-supplied potential values or eligible radio/checkbox options)
 
 ## Notes
 

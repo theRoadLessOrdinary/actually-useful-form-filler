@@ -6,6 +6,7 @@
 const fillBtn = document.getElementById('fillBtn');
 const settingsBtn = document.getElementById('settingsBtn');
 const pickerBtn = document.getElementById('pickerBtn');
+const customPickerBtn = document.getElementById('customPickerBtn');
 const statusDiv = document.getElementById('status');
 const checkboxes = {
   safeStrings: document.getElementById('safeStrings'),
@@ -108,11 +109,40 @@ async function startPicker() {
 }
 
 /**
+ * Start custom field picker mode
+ */
+async function startCustomPicker() {
+  try {
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+    // Inject content script if needed
+    try {
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['lib/testFormData.js', 'lib/validators.js', 'lib/formFiller.js', 'lib/paintCanInjector.js', 'content-script.js']
+      });
+    } catch (e) {
+      // Script may already be injected, ignore
+    }
+
+    await chrome.tabs.sendMessage(tab.id, {
+      action: 'startCustomPicker'
+    });
+
+    showStatus('Click a field to set its custom values. Close this popup when done.', 'success');
+    window.close();
+  } catch (error) {
+    showStatus('Must be on a regular web page (not special pages like chrome://', 'error');
+  }
+}
+
+/**
  * Event listeners
  */
 fillBtn.addEventListener('click', fillForm);
 settingsBtn.addEventListener('click', openSettings);
 pickerBtn.addEventListener('click', startPicker);
+customPickerBtn.addEventListener('click', startCustomPicker);
 
 Object.values(checkboxes).forEach(checkbox => {
   checkbox.addEventListener('change', saveSettings);
