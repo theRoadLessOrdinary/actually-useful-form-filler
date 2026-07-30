@@ -136,3 +136,7 @@ Settings saved to `chrome.storage.sync`:
 - Form events dispatched: input, change, blur
 - Email generation prefers data in order: employer > company > random
 - Zipcode reconciliation requires internet access (zippopotam.us)
+
+## License
+
+See [LICENSE](LICENSE). Free to use, copy, modify, and distribute for non-commercial purposes; commercial use requires permission. Provided with no warranty.
