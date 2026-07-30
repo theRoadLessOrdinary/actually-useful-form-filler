@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Tilted paint can, like Inkscape's paint bucket tool -->
+  <g transform="rotate(-25 16 16)">
+    <!-- Can body -->
+    <rect x="10" y="8" width="12" height="14" rx="1" fill="#e8b44f" stroke="#c9943f" stroke-width="0.8"/>
+
+    <!-- Can bottom rim -->
+    <ellipse cx="16" cy="22" rx="6.2" ry="1.5" fill="#d4a03f" stroke="#c9943f" stroke-width="0.8"/>
+
+    <!-- Can top rim -->
+    <ellipse cx="16" cy="8" rx="6" ry="1.2" fill="#f5c86f" stroke="#c9943f" stroke-width="0.8"/>
+
+    <!-- Handle -->
+    <path d="M 20 10 Q 24 8 24 4" fill="none" stroke="#d4a03f" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Paint inside (visible at top) -->
+    <ellipse cx="16" cy="9" rx="5" ry="0.8" fill="#8b4513" opacity="0.6"/>
+
+    <!-- Highlight on can -->
+    <rect x="11" y="10" width="2" height="10" rx="1" fill="white" opacity="0.3"/>
+  </g>
+</svg>

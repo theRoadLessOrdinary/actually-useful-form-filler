@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Actually Useful Form Filler",
+  "version": "1.0.0",
+  "description": "Intelligently fill forms with realistic test data",
+  "author": "Map's Edge Creative",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://api.zippopotam.us/*",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/testFormData.js", "lib/validators.js", "lib/formFiller.js", "lib/paintCanInjector.js", "content-script.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/paint-can.svg", "lib/testFormData.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Form Filler",
+    "default_icons": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "options_page": "settings.html"
+}
