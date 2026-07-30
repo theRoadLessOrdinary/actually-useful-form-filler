@@ -177,8 +177,6 @@ Settings saved to `chrome.storage.sync`:
 - `reconcile` (boolean)
 - `reconcileAttempts` (number: 3, 5, or 10)
 - `reconcileFallback` (string: "blank" or "random")
-- `konamiEnabled` (boolean)
-- `konamiCode` (string)
 
 ## Notes
 

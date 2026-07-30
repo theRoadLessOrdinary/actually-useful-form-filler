@@ -68,7 +68,6 @@
 
 ### Form not filling
 - Ensure you're on a page with a visible form
-- Try clicking "Fill Form" button instead of Konami Code
 - Check console (F12) for error messages
 
 ### Paint can icon not showing
@@ -91,7 +90,6 @@
   ```
 
 - **Test Different Data**: Each call generates new random data
-  - Type Konami Code multiple times to get different datasets
   - Use Fill Form button repeatedly for new data
 
 - **Smart Email**: Extension generates emails intelligently:
