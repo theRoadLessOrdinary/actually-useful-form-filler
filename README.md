@@ -112,6 +112,22 @@ Supported `dv` values:
 
 Checkboxes and radios are ignored by default (see [Notes](#notes)) — add a `dv` attribute to one to have it filled anyway.
 
+## Settings Page
+
+Open via the extension's popup or `chrome://extensions` to configure:
+
+| Group | Option | What it does |
+|---|---|---|
+| 🔒 String Safety | Only safe strings | Strips vowels, Q, and K from randomly generated characters, to avoid accidentally generating profanity |
+| 📞 Phone Numbers | Only plausible phone numbers | Generates numbers with valid FCC area codes/exchanges instead of fully random digits |
+| 🗺️ Location Data | Reconcile city/state/ZIP | Looks up a real matching city/state/ZIP via the zippopotam.us API instead of generating an unverified one |
+| 🗺️ Location Data | API attempts (shown when reconciliation is on) | How many ZIP codes to try (3, 5, or 10) before giving up |
+| 🗺️ Location Data | If API fails (shown when reconciliation is on) | Leave the field blank, or fall back to random unverified data |
+| 🎨 Paint Can Trigger | Enable paint can icon | Toggles whether the auto-fill icon is injected next to the first text field on a form (on by default) |
+| 🚫 Fields to Skip | (list, not a toggle) | Fields marked via "Pick Fields to Skip" in the popup; each is individually removable, plus a "Clear All Skip Fields" button |
+
+**Save Settings** and **Reset to Defaults** buttons apply/discard changes across the whole page.
+
 ## Technical Architecture
 
 ### Content Script Flow
