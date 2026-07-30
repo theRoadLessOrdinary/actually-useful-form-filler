@@ -6,6 +6,10 @@ Intelligently fill web forms with realistic test data. Click the paint can icon 
 
 ![Form auto-filled with realistic test data](screenshots/form-fill-demo.png)
 
+Marking a field to skip via picker mode (click "Pick Fields to Skip" in the popup, then click a field to block it from future auto-fills):
+
+![Marking the Email field as skipped in picker mode](screenshots/field-blocker-demo.png)
+
 ## Files Created
 
 ### Core Extension Files
