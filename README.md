@@ -84,6 +84,34 @@ Add explicit `dv` attribute to form fields for precise control:
 <select dv="state" name="state_code">...</select>
 ```
 
+## The `dv` Attribute
+
+The `dv` attribute tells the filler exactly what kind of data to put in a field, overriding both smart pattern matching and the type fallback. It's checked first, before anything else (`_detectDataType` in `lib/formFiller.js`) — use it whenever a field's `name`/`id`/`aria-label`/`placeholder` don't give the pattern matcher enough to go on, or when it guesses wrong.
+
+```html
+<input type="text" dv="zipcode" name="postal_code">
+```
+
+Supported `dv` values:
+
+| Value | Fills with |
+|---|---|
+| `first` | First name |
+| `last` | Last name |
+| `email` | Intelligently generated email (uses first/last/company already filled on the form) |
+| `phone` | Phone number (respects the "plausible phone" setting) |
+| `zipcode` | ZIP code (respects reconciliation settings) |
+| `city` | City |
+| `state` | State |
+| `street` | Street address |
+| `apartment` | Apartment/suite number (only filled ~20% of the time) |
+| `company` | Company name |
+| `occupation` | Job title |
+| `salary` | Annual salary |
+| `dob` | Date of birth |
+
+Checkboxes and radios are ignored by default (see [Notes](#notes)) — add a `dv` attribute to one to have it filled anyway.
+
 ## Technical Architecture
 
 ### Content Script Flow
